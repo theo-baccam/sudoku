@@ -18,3 +18,17 @@ SudokuBoard::SudokuBoard() {
     };
 }
 SudokuBoard::~SudokuBoard() {}
+
+bool SudokuBoard::isValidHorizontal(int y, int x) {
+    for (int _x = 0; _x < this->sudokuBoard[y].size(); _x++) {
+        if (_x == x) {
+            continue;
+        };
+
+        if (this->sudokuBoard[y][_x] == this->sudokuBoard[y][x]) {
+            return false;
+        };
+    };
+
+    return true;
+}
