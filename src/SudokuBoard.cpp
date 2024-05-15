@@ -33,7 +33,7 @@ bool SudokuBoard::isValidHorizontal(int y, int x) {
     return true;
 }
 
-bool SudokuBoard:isValidVertical(int y, int x) {
+bool SudokuBoard::isValidVertical(int y, int x) {
     for (int _y = 0; _y < this->sudokuBoard.size(); _y++) {
         if (_y == y) {
             continue;
