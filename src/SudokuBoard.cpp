@@ -46,3 +46,26 @@ bool SudokuBoard::isValidVertical(int y, int x) {
 
     return true;
 }
+
+bool SudokuBoard::isValidBlock(int y, int x) {
+    int blockY = y - y % 3;
+    int blockX = x - x % 3;
+    for (int _y = 0; _y < 3; ++_y) {
+        for (int _x = 0; _x < 3; ++_x) {
+            if (
+                ((_y + blockY) == y) &&
+                ((_x + blockX) == x)
+            ) {
+                continue;
+            }
+            if (
+                this->sudokuBoard[_y + blockY][_x + blockX]
+                == this->sudokuBoard[y][x]
+            ) {
+                return false;
+            };
+        };
+    };
+
+    return true;
+}

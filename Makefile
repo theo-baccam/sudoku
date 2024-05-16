@@ -6,6 +6,7 @@ EXECUTABLE = sudoku
 TEST_SUDOKU_BOARD_INIT_EXE = test-sudoku-board-init.exe
 TEST_SUDOKU_BOARD_IS_VALID_HORIZONTAL_EXE = test-sudoku-board-is-valid-horizontal.exe
 TEST_SUDOKU_BOARD_IS_VALID_VERTICAL_EXE = test-sudoku-board-is-valid-vertical.exe
+TEST_SUDOKU_BOARD_IS_VALID_BLOCK_EXE = test-sudoku-board-is-valid-block.exe
 
 
 all: $(wildcard src/*.cpp)
@@ -20,8 +21,12 @@ test-sudoku-board-is-valid-horizontal: src/sudokuBoard.cpp tests/sudokuBoard_isV
 test-sudoku-board-is-valid-vertical: src/sudokuBoard.cpp tests/sudokuBoard_isValidVertical.cpp
 	$(CC) $^ $(ESSENTIAL_FLAGS) -o $(TEST_SUDOKU_BOARD_IS_VALID_VERTICAL_EXE)
 
+test-sudoku-board-is-valid-block: src/sudokuBoard.cpp tests/sudokuBoard_isValidBlock.cpp
+	$(CC) $^ $(ESSENTIAL_FLAGS) -o $(TEST_SUDOKU_BOARD_IS_VALID_BLOCK_EXE)
+
 clean:
 	rm -f $(EXECUTABLE)
 	rm -f $(TEST_SUDOKU_BOARD_INIT_EXE)
 	rm -f $(TEST_SUDOKU_BOARD_IS_VALID_HORIZONTAL_EXE)
 	rm -f $(TEST_SUDOKU_BOARD_IS_VALID_VERTICAL_EXE)
+	rm -f $(TEST_SUDOKU_BOARD_IS_VALID_BLOCK_EXE)
