@@ -6,19 +6,19 @@
 TEST_CASE("Checking if isValidBlock works") {
     SudokuBoard badBoard;
     badBoard.sudokuBoard = {
-        {1, 1, 0,   0, 0, 0,   0, 0, 0},
+        {0, 0, 0,   0, 0, 0,   0, 0, 0},
         {0, 0, 0,   0, 0, 0,   0, 0, 0},
         {0, 0, 0,   0, 0, 0,   0, 0, 0},
 
         {0, 0, 0,   0, 0, 0,   0, 0, 0},
-        {0, 0, 0,   0, 0, 0,   0, 0, 0},
-        {0, 0, 0,   0, 0, 0,   0, 0, 0},
+        {0, 0, 0,   0, 1, 0,   0, 0, 0},
+        {0, 0, 0,   0, 0, 1,   0, 0, 0},
 
         {0, 0, 0,   0, 0, 0,   0, 0, 0},
         {0, 0, 0,   0, 0, 0,   0, 0, 0},
         {0, 0, 0,   0, 0, 0,   0, 0, 0}
     };
-    CHECK(badBoard.isValidBlock(0, 0) == false);
+    CHECK(badBoard.isValidBlock(4, 4) == false);
 
     SudokuBoard goodBoard;
     goodBoard.sudokuBoard = {

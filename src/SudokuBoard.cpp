@@ -50,8 +50,8 @@ bool SudokuBoard::isValidVertical(int y, int x) {
 bool SudokuBoard::isValidBlock(int y, int x) {
     int blockY = y - y % 3;
     int blockX = x - x % 3;
-    for (int _y = 0; _y < 3; ++_y) {
-        for (int _x = 0; _x < 3; ++_x) {
+    for (int _y = 0; _y < 3; _y++) {
+        for (int _x = 0; _x < 3; _x++) {
             if (
                 ((_y + blockY) == y) &&
                 ((_x + blockX) == x)
@@ -62,6 +62,24 @@ bool SudokuBoard::isValidBlock(int y, int x) {
                 this->sudokuBoard[_y + blockY][_x + blockX]
                 == this->sudokuBoard[y][x]
             ) {
+                return false;
+            };
+        };
+    };
+
+    return true;
+}
+
+bool SudokuBoard::isBoardComplete() {
+    for (int y = 0; y < this->sudokuBoard.size(); y++) {
+        for (int x = 0; x < this->sudokuBoard[y].size(); x++) {
+            if (this->sudokuBoard[y][x] == 0) {
+                return false;
+            } else if (!isValidHorizontal(y, x)) {
+                return false;
+            } else if (!isValidVertical(y, x)) {
+                return false;
+            } else if (!isValidBlock(y, x)) {
                 return false;
             };
         };

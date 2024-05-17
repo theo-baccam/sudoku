@@ -14,5 +14,5 @@ class SudokuBoard {
         bool isValidHorizontal(int y, int x);
         bool isValidVertical(int y, int x);
         bool isValidBlock(int y, int x);
-        bool isBoardSolved();
+        bool isBoardComplete();
 };
