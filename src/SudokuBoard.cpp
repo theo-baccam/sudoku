@@ -18,6 +18,7 @@ SudokuBoard::SudokuBoard() {
         {0, 0, 0,   0, 0, 0,   0, 0, 0},
         {0, 0, 0,   0, 0, 0,   0, 0, 0}
     };
+    this->originalBoard = sudokuBoard;
 }
 SudokuBoard::~SudokuBoard() {}
 
@@ -140,4 +141,6 @@ void SudokuBoard::generateBoard(double densityFraction) {
 
         i++;
     } while (i != maxFilledSquares);
+
+    this->originalBoard = sudokuBoard;
 }

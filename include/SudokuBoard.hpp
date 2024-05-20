@@ -5,6 +5,7 @@
 class SudokuBoard {
     public:
         std::vector<std::vector<int>> sudokuBoard;
+        std::vector<std::vector<int>> originalBoard;
 
         SudokuBoard();
         ~SudokuBoard();
