@@ -3,7 +3,7 @@
 #include "SudokuBoard.hpp"
 
 
-TEST_CASE("Checking if isValidVertical works") {
+TEST_CASE("Checking if isBoardComplete works") {
     SudokuBoard nonFilled;
     nonFilled.sudokuBoard = {
         {5, 3, 0,   6, 7, 8,   9, 1, 2},

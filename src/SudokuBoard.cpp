@@ -1,4 +1,6 @@
 #include <vector>
+#include <random>
+#include <ctime>
 #include "SudokuBoard.hpp"
 
 
@@ -20,6 +22,10 @@ SudokuBoard::SudokuBoard() {
 SudokuBoard::~SudokuBoard() {}
 
 bool SudokuBoard::isValidHorizontal(int y, int x) {
+    if (this->sudokuBoard[y][x] == 0) {
+        return true;
+    };
+
     for (int _x = 0; _x < this->sudokuBoard[y].size(); _x++) {
         if (_x == x) {
             continue;
@@ -34,6 +40,10 @@ bool SudokuBoard::isValidHorizontal(int y, int x) {
 }
 
 bool SudokuBoard::isValidVertical(int y, int x) {
+    if (this->sudokuBoard[y][x] == 0) {
+        return true;
+    };
+
     for (int _y = 0; _y < this->sudokuBoard.size(); _y++) {
         if (_y == y) {
             continue;
@@ -48,6 +58,10 @@ bool SudokuBoard::isValidVertical(int y, int x) {
 }
 
 bool SudokuBoard::isValidBlock(int y, int x) {
+    if (this->sudokuBoard[y][x] == 0) {
+        return true;
+    };
+
     int blockY = y - y % 3;
     int blockX = x - x % 3;
     for (int _y = 0; _y < 3; _y++) {
@@ -86,4 +100,44 @@ bool SudokuBoard::isBoardComplete() {
     };
 
     return true;
+}
+
+void SudokuBoard::generateBoard(double densityFraction) {
+    srand(time(0));
+    int maxFilledSquares = (9 * 9) * densityFraction;
+
+    int i = 0;
+    int j = 0;
+    do {
+        int randomY = rand() % 9;
+        int randomX = rand() % 9;
+        int randomValue = rand() % 9 + 1;
+
+        if (this->sudokuBoard[randomY][randomX] != 0) {
+            continue;
+        };
+        this->sudokuBoard[randomY][randomX] = randomValue;
+
+        if (!(
+            (isValidHorizontal(randomY, randomX)) &&
+            (isValidVertical(randomY, randomX)) &&
+            (isValidBlock(randomY, randomX))
+        )) {
+            this->sudokuBoard[randomY][randomX] = 0;
+            continue;
+        };
+
+        j = 0;
+        for (int y = 0; y < this->sudokuBoard.size(); y++) {
+            for (int x = 0; x < this->sudokuBoard[y].size(); x++) {
+                if (sudokuBoard[y][x] == randomValue) j++;
+            };
+        };
+        if (j > 9) {
+            this->sudokuBoard[randomY][randomX] = 0;
+            continue;
+        };
+
+        i++;
+    } while (i != maxFilledSquares);
 }
