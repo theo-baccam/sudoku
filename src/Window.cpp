@@ -24,10 +24,6 @@ void Window::drawSudokuBoard(
     std::vector<std::vector<int>> sudokuBoard,
     std::vector<std::vector<int>> originalBoard
 ) {
-    BeginDrawing();
-
-    ClearBackground(RAYWHITE);
-
     for (int i = 0; i < 9; ++i) {
         for (int j = 0; j < 9; ++j) {
             int cellSize = GetScreenWidth() / 9;
@@ -49,6 +45,18 @@ void Window::drawSudokuBoard(
             }
         }
     }
+}
 
-    EndDrawing();
+void Window::drawWinText() {
+    const char text[] = "You win";
+    int x = (GetScreenWidth() / 2) - (MeasureText(text, 80) / 2);
+    int y = GetScreenHeight() / 2 - 40;
+
+    DrawText(
+        text,
+        x,
+        y,
+        80,
+        GREEN
+    );
 }

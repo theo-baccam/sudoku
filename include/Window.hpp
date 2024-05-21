@@ -14,4 +14,5 @@ class Window {
             std::vector<std::vector<int>> sudokuBoard,
             std::vector<std::vector<int>> originalBoard
         );
+        void drawWinText();
 };
