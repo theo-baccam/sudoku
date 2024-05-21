@@ -16,7 +16,14 @@ void Controller::run() {
 
     while(!WindowShouldClose()) {
         int pressedNumber = window.getPressedNumber();
-        if (pressedNumber != -1) std::cout << pressedNumber << '\n';
+        if (pressedNumber != -1) {
+            const int y = window.getHoveredSquareY();
+            const int x = window.getHoveredSquareX();
+
+            if (board.originalBoard[y][x] == 0) {
+                board.sudokuBoard[y][x] = pressedNumber;
+            }
+        };
         window.drawSudokuBoard(board.sudokuBoard, board.originalBoard);
     };
 
