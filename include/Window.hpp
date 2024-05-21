@@ -7,5 +7,11 @@ class Window {
         Window();
         ~Window();
 
-        void drawSudokuBoard(std::vector<std::vector<int>> sudokuBoard);
+        int getPressedNumber();
+        int getHoveredSquareY();
+        int getHoveredSquareX();
+        void drawSudokuBoard(
+            std::vector<std::vector<int>> sudokuBoard,
+            std::vector<std::vector<int>> originalBoard
+        );
 };
