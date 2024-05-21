@@ -3,10 +3,10 @@
 #include "Window.hpp"
 
 
-SudokuBoard::SudokuBoard() {}
-SudokuBoard::SudokuBoard() {}
+Window::Window() {}
+Window::~Window() {}
 
-void SudokuBoard::drawSudokuBoard(std::vector<std::vector<int>>) {
+void Window::drawSudokuBoard(std::vector<std::vector<int>> sudokuBoard) {
     BeginDrawing();
 
     ClearBackground(RAYWHITE);

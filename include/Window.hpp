@@ -4,8 +4,8 @@
 
 class Window {
     public:
-        SudokuBoard();
-        ~SudokuBoard();
+        Window();
+        ~Window();
 
         void drawSudokuBoard(std::vector<std::vector<int>> sudokuBoard);
 };
